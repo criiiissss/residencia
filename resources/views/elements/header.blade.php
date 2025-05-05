@@ -5,7 +5,7 @@
     <a href= "{{route('mod-app')}}" id="botonCFE"><img id="logoCFE" src= {{ asset('image\logoDT2.png') }}></a>
     @auth
     <div class="dropdown">
-        <button class="dropdown-btn" onclick="redirect0()">Tabla de estados</button>
+        <button class="dropdown-btn" onclick="redirect0()">Tabla de Estados</button>
     </div>
     <div class="dropdown">
         <button class="dropdown-btn" onclick="redirect()">Monitoreo de Enlaces
@@ -13,7 +13,6 @@
             <div class="dropdown-content">
                 <a href="{{route('enlace-crear')}}">Crear Enlace</a>
                 <a href="{{route('enlace-ver')}}">Ver Enlaces</a>
-                <a href="{{route('mediciones-tomar')}}">Tomar Mediciones</a>
                 <a href="{{route('medicion-ver')}}">Ver Mediciones</a>
                 <a href="{{route('ubicaciones-ver')}}">Ver Ubicaciones</a>
             </div>

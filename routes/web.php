@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Maps\EnlaceController;
@@ -10,9 +9,6 @@ use App\Http\Controllers\Maps\DetalleController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GerenciaController;
-
-
-
 
 
 
@@ -32,8 +28,8 @@ use App\Http\Controllers\GerenciaController;
             Route::get('/modulos/maps/ubicaciones/ver',[UbicacionController::class, 'index'])->middleware('auth.level1')->name('ubicaciones-ver'); //VER LA LISTA DE LAS UBICACIONES
             Route::get('/modulos/maps/ubicaciones/ver/detalle{id}',[UbicacionController::class, 'verDetalle'])->middleware('auth.level1')->name('ubicaciones-ver-detalle'); //VER LOS DETALLES DE UNA UBICACION
             Route::get('/modulos/estadosTabla',[EnlaceController::class, 'verTabla'])->middleware('auth.level1')->name('enlaces-tabla');
-
-
+            Route::post('/modulos/maps/estructura/agregar/{id}', [EstructuraController::class, 'agregarEstructuras'])->name('estructura-agregar');//AGREGAR ELE EXCEL Y LEERLO DE MANERA AUTOMATICA
+            
 
 
         //LEVEL2

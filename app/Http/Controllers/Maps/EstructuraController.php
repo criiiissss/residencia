@@ -86,23 +86,22 @@ class EstructuraController extends Controller
         return view('web.mod.maps.enlaces.agregarEstructuras',compact('enlace','pass','estructur','coordinatesArray'));
     }
 
-    public function agregarEstructuras($id, Request $request){
-        $ayudas = $request->estructuras;
-        $objeto = json_decode($ayudas);
-        $contador = 0;
-        foreach ($objeto as $nuevaEstructura){
-            $crearEstructura = new Estructura();
-            $crearEstructura->name = $nuevaEstructura->name;
-            $crearEstructura->lat = $nuevaEstructura->lat;
-            $crearEstructura->lng = $nuevaEstructura->lng;
-            $crearEstructura->cajaEmpalme = $nuevaEstructura->tipo;
-            $crearEstructura->distancia = $nuevaEstructura->distancia;
-            $crearEstructura->idEnlace = $id;
-            $crearEstructura->save();
-        }
+    public function agregarEstructuras($id, Request $request)
+    {
+    $estructuras = $request->input('estructuras');
 
-        $estructuras = Estructura::where('idEnlace', $id)->with('enlaces')->get();
-        return redirect(route('estructura-enlace-resumen',$id));
+    foreach ($estructuras as $data) {
+        $estructura = new Estructura();
+        $estructura->name = $data['name'];
+        $estructura->lat = $data['lat'];
+        $estructura->lng = $data['lng'];
+        $estructura->cajaEmpalme = $data['tipo'];
+        $estructura->distancia = $data['distancia'];
+        $estructura->idEnlace = $id;
+        $estructura->save();
+    }
+
+    return redirect()->route('estructura-enlace-resumen', $id);
     }
 
     public function modificarEstructuras($id){
